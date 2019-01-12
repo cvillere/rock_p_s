@@ -1,0 +1,44 @@
+<!Doctype HTML>
+<head>
+
+</head>
+    <body>
+        <script>
+            function computerPlay () {
+                const compNumber = Math.floor((Math.random() * 12) + 1);
+                if (compNumber >= 1 && compNumber <= 4) {
+                    return "Rock";
+                } else if (compNumber >= 5 && compNumber <= 8) {
+                    return "Paper";
+                } else if (compNumber >= 9 && compNumber <= 12) {
+                    return "Scissors";
+                }
+            };
+
+            function playGame (playerSelection, computerSelection) {
+                let playerSelectionValue = playerSelection.toLowerCase();
+
+                if (computerSelection === "Rock" && playerSelection === "paper") {
+                    return "You Win! Paper beats Rock!";
+                } else if (computerSelection === "Rock" && playerSelection === "scissors") {
+                    return "You lose! Rock beats Paper!";
+                } else if (computerSelection === "Paper" && playerSelection === "rock") {
+                    return "You lose! Paper beats Rock!";
+                } else if (computerSelection === "Paper" && playerSelection === "scissors") {
+                    return "You win! Scissors beats Paper!";
+                } else if (computerSelection === "Scissors" && playerSelection === "paper") {
+                    return "You lose! Scissors beats Paper!";
+                } else if (computerSelection === "Scissors" && playerSelection === "rock") {
+                    return "You win! Rock beats Scissors!";
+                } else {
+                    return "It's a Tie!";
+                }
+
+            }
+        
+        </script>
+
+    </body>
+
+
+</html>
