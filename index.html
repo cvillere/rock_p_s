@@ -5,7 +5,7 @@
     <body>
         <script>
             function computerPlay () {
-                const compNumber = Math.floor((Math.random() * 12) + 1);
+                let compNumber = Math.floor((Math.random() * 12) + 1);
                 if (compNumber >= 1 && compNumber <= 4) {
                     return "Rock";
                 } else if (compNumber >= 5 && compNumber <= 8) {
@@ -18,23 +18,24 @@
             function playGame (playerSelection, computerSelection) {
                 let playerSelectionValue = playerSelection.toLowerCase();
 
-                if (computerSelection === "Rock" && playerSelection === "paper") {
+                if (computerSelection === "Rock" && playerSelectionValue === "paper") {
                     return "You Win! Paper beats Rock!";
-                } else if (computerSelection === "Rock" && playerSelection === "scissors") {
+                } else if (computerSelection === "Rock" && playerSelectionValue === "scissors") {
                     return "You lose! Rock beats Paper!";
-                } else if (computerSelection === "Paper" && playerSelection === "rock") {
+                } else if (computerSelection === "Paper" && playerSelectionValue === "rock") {
                     return "You lose! Paper beats Rock!";
-                } else if (computerSelection === "Paper" && playerSelection === "scissors") {
+                } else if (computerSelection === "Paper" && playerSelectionValue === "scissors") {
                     return "You win! Scissors beats Paper!";
-                } else if (computerSelection === "Scissors" && playerSelection === "paper") {
+                } else if (computerSelection === "Scissors" && playerSelectionValue === "paper") {
                     return "You lose! Scissors beats Paper!";
-                } else if (computerSelection === "Scissors" && playerSelection === "rock") {
+                } else if (computerSelection === "Scissors" && playerSelectionValue === "rock") {
                     return "You win! Rock beats Scissors!";
                 } else {
                     return "It's a Tie!";
                 }
 
             }
+        
         
         </script>
 
