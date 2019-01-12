@@ -16,24 +16,47 @@
             };
 
             function playGame (playerSelection, computerSelection) {
+                let playerSelection = window.prompt("Please enter your selection.")
                 let playerSelectionValue = playerSelection.toLowerCase();
+                let computerSelection = computerPlay();
+                let playerWins = 0;
+                let computerWins = 0;
 
                 if (computerSelection === "Rock" && playerSelectionValue === "paper") {
+                    ++playerWins 
                     return "You Win! Paper beats Rock!";
                 } else if (computerSelection === "Rock" && playerSelectionValue === "scissors") {
+                    ++computerWins
                     return "You lose! Rock beats Paper!";
                 } else if (computerSelection === "Paper" && playerSelectionValue === "rock") {
+                    ++computerWins
                     return "You lose! Paper beats Rock!";
                 } else if (computerSelection === "Paper" && playerSelectionValue === "scissors") {
+                    ++playerWins
                     return "You win! Scissors beats Paper!";
                 } else if (computerSelection === "Scissors" && playerSelectionValue === "paper") {
+                    ++computerWins
                     return "You lose! Scissors beats Paper!";
                 } else if (computerSelection === "Scissors" && playerSelectionValue === "rock") {
+                    ++playerWins
                     return "You win! Rock beats Scissors!";
                 } else {
                     return "It's a Tie!";
                 }
 
+            }
+
+            function game () {
+                for (i = 0; i < 5; i++) {
+                    playGame(playerSelection, computerSelection)
+                }
+                if (playerWins > computerWins) {
+                    return "You won the 5 game series!";
+                } else if (computerWins > playerWins) {
+                    return "You lost the 5 game series!"
+                } else {
+                    return "You tied the 5 game series!"
+                }
             }
         
         
