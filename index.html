@@ -16,53 +16,162 @@
             };
 
 
-            let playerWins = 0;
-            let computerWins = 0;
+        let playerWins = 0;
+        let computerWins = 0;
 
-            function playGame (playerSelection, computerSelection) {
-                let playerSelectionValue = playerSelection.toLowerCase();
-
-                if (computerSelection === "Rock" && playerSelectionValue === "paper") {
-                    ++playerWins
-                    return "You Win! Paper beats Rock!";
-                } else if (computerSelection === "Rock" && playerSelectionValue === "scissors") {
-                    ++computerWins
-                    return "You lose! Rock beats Paper!";
-                } else if (computerSelection === "Paper" && playerSelectionValue === "rock") {
-                    ++computerWins
-                    return "You lose! Paper beats Rock!";
-                } else if (computerSelection === "Paper" && playerSelectionValue === "scissors") {
-                    ++playerWins
-                    return "You win! Scissors beats Paper!";
-                } else if (computerSelection === "Scissors" && playerSelectionValue === "paper") {
-                    ++computerWins
-                    return "You lose! Scissors beats Paper!";
-                } else if (computerSelection === "Scissors" && playerSelectionValue === "rock") {
-                    ++playerWins
-                    return "You win! Rock beats Scissors!";
-                } else {
-                    return "It's a Tie!";
-                }
-                
-            }
-
-
-            function game () {
-                for (let i = 0; i < 5; i++) {
-                    console.log(playGame(window.prompt("Please enter your value."), computerPlay()));
-                    console.log("playerWins: " + playerWins + " computerWins: " + computerWins);  
-                }
-                if (playerWins > computerWins) {
-                    console.log("You won the 5 game series!")
-                } else if (computerWins > playerWins) {
-                    console.log("You lost the 5 game series!")
-                } else {
-                    console.log("You tied!")
-                }
-                
-
-            }
+  
         
+        const btnRock = document.createElement("button");
+        const btnPaper = document.createElement("button");
+        const btnScissors = document.createElement("button");
+        const buttonDiv = document.createElement("div");
+        const playerDiv = document.createElement("div");
+        const computerDiv = document.createElement("div");
+        const resultsDiv = document.createElement("div");
+        const resultsMessage = document.createElement("div");
+        const playerCount = document.createElement("div");
+        const computerCount = document.createElement("div");
+        const countDiv = document.createElement("div");
+
+    
+
+        btnRock.addEventListener("click", () => {playGame("rock", computerPlay())});
+        btnPaper.addEventListener("click", () => {playGame("paper", computerPlay())});
+        btnScissors.addEventListener("click", () => {playGame("scissors", computerPlay())});
+
+        btnRock.textContent = "ROCK";
+        btnPaper.textContent = "PAPER";
+        btnScissors.textContent = "SCISSORS";
+
+        btnRock.style.height = "75px";
+        btnPaper.style.height = "75px";
+        btnScissors.style.height = "75px";
+
+        btnRock.style.width = "125px";
+        btnPaper.style.width = "125px";
+        btnScissors.style.width = "125px";
+
+        btnRock.style.margin = "50px 50px 50px 50px";
+        btnPaper.style.margin = "50px 50px 50px 50px";
+        btnScissors.style.margin = "50px 50px 50px 50px";
+
+        buttonDiv.style.position = "relative";
+        buttonDiv.style.left = "12.5%";
+        buttonDiv.style.top = "100px";
+
+        buttonDiv.appendChild(btnRock);
+        buttonDiv.appendChild(btnPaper);
+        buttonDiv.appendChild(btnScissors);
+        document.body.appendChild(buttonDiv);
+
+        playerCount.style.display = "inline";
+        playerCount.style.position = "relative";
+        playerCount.style.left = "40%";
+        computerCount.style.display = "inline";
+        computerCount.style.position = "relative";
+        computerCount.style.left = "60%";
+        
+        playerCount.id = "playerNumCount";
+        computerCount.id = "computerNumCount";
+        
+        
+        countDiv.appendChild(playerCount);
+        countDiv.appendChild(computerCount);
+        
+
+        
+        let playerResults = document.createTextNode("PlayerWins");
+        let computerResults = document.createTextNode("ComputerWins");
+        playerDiv.style.display = "inline";
+        playerDiv.style.margin = "15px 45px 15px 45px";
+        computerDiv.style.margin = "15px 45px 15px 45px";
+        computerDiv.style.display = "inline";
+        playerDiv.appendChild(playerResults);
+        computerDiv.appendChild(computerResults);
+        
+        
+        resultsDiv.appendChild(playerDiv);
+        resultsDiv.appendChild(computerDiv);
+        resultsDiv.style.position = "relative";
+        resultsDiv.style.left = "29.5%";
+        resultsDiv.style.top = "55px";
+        resultsMessage.style.position = "relative";
+        resultsMessage.style.left = "35.5%";
+        resultsMessage.style.top = "150px";
+        resultsMessage.style.margin = "auto";
+        document.body.appendChild(resultsMessage);
+        document.body.insertBefore(resultsDiv, buttonDiv);
+        document.body.insertBefore(countDiv, resultsDiv);
+
+        document.getElementById("playerNumCount").innerHTML = playerWins;
+        document.getElementById("computerNumCount").innerHTML = computerWins;
+
+        function playGame (playerSelection, computerSelection) {
+                gameCount();
+                let playerSelectionValue = playerSelection.toLowerCase();
+                if (computerSelection === "Rock" && playerSelectionValue === "paper") {
+                    playerWins += 1;
+                    document.getElementById("playerNumCount").innerHTML = +playerWins;
+                    console.log(playerWins);
+                    resultsMessage.textContent = "You Win! Paper beats Rock!";
+                } else if (computerSelection === "Rock" && playerSelectionValue === "scissors") {
+                    computerWins += 1;
+                    document.getElementById("computerNumCount").innerHTML = +computerWins;
+                    console.log(computerWins);
+                    resultsMessage.textContent = "You lose! Rock beats Paper!";
+                } else if (computerSelection === "Paper" && playerSelectionValue === "rock") {
+                    computerWins += 1;
+                    document.getElementById("computerNumCount").innerHTML = +computerWins;
+                    console.log(computerWins);
+                    resultsMessage.textContent = "You lose! Paper beats Rock!";
+                } else if (computerSelection === "Paper" && playerSelectionValue === "scissors") {
+                    playerWins += 1;
+                    document.getElementById("playerNumCount").innerHTML = +playerWins;
+                    console.log(computerWins);
+                    resultsMessage.textContent = "You win! Scissors beats Paper!";
+                } else if (computerSelection === "Scissors" && playerSelectionValue === "paper") {
+                    computerWins += 1;
+                    document.getElementById("computerNumCount").innerHTML = +computerWins;
+                    console.log(computerWins);
+                    resultsMessage.textContent = "You lose! Scissors beats Paper!";
+                } else if (computerSelection === "Scissors" && playerSelectionValue === "rock") {
+                    playerWins += 1;
+                    document.getElementById("playerNumCount").innerHTML = +playerWins;
+                    console.log(playerWins);
+                    resultsMessage.textContent = "You win! Rock beats Scissors!";
+                } else {
+                    resultsMessage.textContent = "It's a Tie!";
+                }
+                gameText();
+                };   
+
+
+
+            function gameText () {
+                if (playerWins === 5) {
+                    resultsMessage.textContent = "You won the series!";   
+                }
+
+                if (computerWins === 5) {
+                    resultsMessage.textContent = "You lost the series!";
+                }   
+
+            };
+
+        function gameCount() {
+            if (computerWins === 5 || playerWins === 5) {
+                document.getElementById("playerNumCount").innerHTML = 0;
+                document.getElementById("computerNumCount").innerHTML = 0;
+                playerWins = 0;
+                computerWins = 0;
+            }
+        }
+
+        
+
+
+
+
         
         </script>
 
